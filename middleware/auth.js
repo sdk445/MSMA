@@ -22,11 +22,15 @@ const verifyToken = (req, res, next) => {
 };
 
 let adminRoute = (req, res, next) => {
-    if (req.user) {
-        if(req.user.role == "admin") next()
+  if (req.user) {
+    console.log(req.user);
+    if (req.user.role == "admin") {
+      next();
+    } else {
+      return res.status(400).json({ error: "not allowed" });
     }
-    console.error(error);
-    res.status(400).json({ error: "not allowed" });
+  }
+  
 }
 
 module.exports = { verifyToken: verifyToken, adminRoute: adminRoute };

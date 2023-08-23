@@ -19,5 +19,5 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(" Server will not start " + error));
 db.once("open", () => {
   console.log("Db connection working");
-  app.listen(7800, () => console.log("server running on port 3000"));
+  app.listen(7800, () => console.log("server running on port 7800"));
 });

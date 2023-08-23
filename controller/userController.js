@@ -4,9 +4,10 @@
  */
 
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 let response = require("../libs/responseLib");
 const jwt = require("jsonwebtoken");
+const ActivityLog = require("../models/activityLogModel");
 
 /**
  * function to register the user
@@ -64,7 +65,7 @@ let login = async (req, res) => {
 
     // Generate a JWT
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email, role: user.role },
       "secretkey",
       { expiresIn: "1h" }
     );
@@ -80,7 +81,38 @@ let login = async (req, res) => {
     res.status(500).send(apiResponse);
   }
 };
+
+let getUserlog = async (req, res) => {
+  try {
+    let logs;
+
+    if (req.query.userId) {
+      // If userId is provided, search for logs for that userId
+      logs = await ActivityLog.find({ userId: req.query.userId }).sort({
+        timestamp: -1,
+      });
+    } else {
+      // If userId is not provided, get all logs
+      logs = await ActivityLog.find().sort({
+        timestamp: -1,
+      });
+    }
+    console.log(logs);
+
+    if (logs.length > 0) {
+      let apiResponse = response.generate(false, "Data found", logs);
+      return res.status(200).send(apiResponse);
+    } else {
+      let apiResponse = response.generate(false, "Data not found", null);
+      return res.status(404).send(apiResponse);
+    }
+  } catch (err) {
+    let apiResponse = response.generate(true, err.message, null);
+    res.status(500).send(apiResponse);
+  }
+};
 module.exports = {
   register: register,
   login: login,
+  getUserlog: getUserlog,
 };

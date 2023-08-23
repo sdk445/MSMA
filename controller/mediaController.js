@@ -12,7 +12,7 @@ let addMovie = async (req, res) => {
   try {
     const newMovie = new Content(req.body);
     await newMovie.save();
-
+    // log user activity
     const log = new ActivityLog({
       userId: req.user.userId,
       action: "Add",

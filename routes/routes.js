@@ -19,6 +19,13 @@ router.post(
 );
 router.get("/getContent", auth.verifyToken, mediaController.getContent);
 router.get("/searchContent", auth.verifyToken, mediaController.searchContent);
+router.get(
+  "/getlog",
+  auth.verifyToken,
+  auth.adminRoute,
+  userController.getUserlog
+);
+
 
 
 module.exports = router;

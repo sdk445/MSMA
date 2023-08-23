@@ -5,6 +5,5 @@ const otpSchema = new mongoose.Schema({
     otp: String
 });
 
-//export the model
 
 module.exports = mongoose.model("otp", otpSchema);
