@@ -17,6 +17,8 @@ router.post(
   auth.verifyToken,
   mediaController.addMovie
 );
-router.get("/getContent", validator.validateMovie, mediaController.addMovie);
+router.get("/getContent", auth.verifyToken, mediaController.getContent);
+router.get("/searchContent", auth.verifyToken, mediaController.searchContent);
+
 
 module.exports = router;
