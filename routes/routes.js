@@ -1,14 +1,22 @@
-const express = require("express")
-const router = express.Router()
-let userController = require("../controller/userController")
-let validator = require("../middleware/validator")
+const express = require("express");
+const mediaController = require("../controller/mediaController");
+const router = express.Router();
+const userController = require("../controller/userController");
+const validator = require("../middleware/validator");
+const auth = require("../middleware/auth");
 
-router.post("/register", validator.validateRegistration, userController.register)
 router.post(
-  "/login",
-  validator.validatelogin,
-  userController.login
+  "/register",
+  validator.validateRegistration,
+  userController.register
 );
+router.post("/login", validator.validatelogin, userController.login);
+router.post(
+  "/addContent",
+  validator.validateMovie,
+  auth.verifyToken,
+  mediaController.addMovie
+);
+router.get("/getContent", validator.validateMovie, mediaController.addMovie);
 
-
-module.exports = router
+module.exports = router;

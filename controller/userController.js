@@ -50,13 +50,16 @@ let login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
+    if (!user.allowed) {
+      let apiResponse = response.generate(true, "Please Login again", null);
+      return res.status(401).send(apiResponse);
+    }
 
     // Check if the provided password matches the hashed password
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       let apiResponse = response.generate(true, "Invalid credentials", null);
-      res.status(401).send(apiResponse);
-      return res.status(401).json();
+      return res.status(401).send(apiResponse);
     }
 
     // Generate a JWT
