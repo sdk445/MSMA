@@ -10,6 +10,7 @@ const movieSchema = new mongoose.Schema(
     description: { type: String, required: true },
     contentType: { type: String, enum: ["movie", "series"], required: true },
     link: { type: String, required: true, unique: true },
+    seasons: [{ seasonNumber: Number, episodes: {} }],
     watchCount: { type: Number, default: 0 },
     poster: String,
     cover_image: String,
