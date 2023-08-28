@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "6d918ce7-5fac-4681-b627-550608dcd9c5",
+		"name": "MSMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16577119",
+		"_collection_link": "https://www.postman.com/aviation-engineer-40949459/workspace/lib-management/collection/16577119-6d918ce7-5fac-4681-b627-550608dcd9c5?action=share&source=collection_link&creator=16577119"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"had3haa@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"name\":\"user1\",\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/register",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"hello@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/login",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addContent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"title\": \"Movie 1\",\r\n    \"genre\": \"Action\",\r\n    \"releaseYear\": 2022,\r\n    \"director\": \"Director 1\",\r\n    \"duration\": 120,\r\n    \"description\": \"Description 1\",\r\n    \"contentType\": \"movie\",\r\n    \"link\": \"https://example.com/movie1\",\r\n    \"watchCount\": 0\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/addContent",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"addContent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchContent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content-type\" : \"movie\",\r\n    \"filter\" : \r\n}\r\n\r\n// filter [all , movie , series , ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/searchContent",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"searchContent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getContent",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU1ZGJhZTg0MDg5ZDJhZTk2NDc1ZDkiLCJlbWFpbCI6ImhhZGhhYUBnbWFpbC5jb20iLCJpYXQiOjE2OTI3ODU1ODksImV4cCI6MTY5Mjc4OTE4OX0.1aBL2mmQ6lg-yJVP1UeXUtejqlgVmjxHZSYwyQ6qiA4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{local}}/api/v1/getContent?contentType=movie&page=1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getContent"
+					],
+					"query": [
+						{
+							"key": "contentType",
+							"value": "movie",
+							"description": "either movie or series"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getuserlog",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU1ZTk4YWY5NDNhZGQ2YzE5YTliZDEiLCJlbWFpbCI6ImhhZDNoYWFAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkyNzkwMDQ4LCJleHAiOjE2OTI3OTM2NDh9.YOAIVWrFco0c0TcKpYALvW-3eoG7x0Z1WzGyRFFaCFk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{local}}/api/v1/getlog?userId=",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getlog"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSeries",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU1YjA5YTg4OWQ2ZTcwMTk4OWI5YTQiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkzMTk2MzI0LCJleHAiOjE2OTMxOTk5MjR9.C40MptNJl7K_uwJEyVrAiriio4UFZ3e0CKvEkuckiJk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"title\": \"Movie 1\",\r\n    \"genre\": \"Action\",\r\n    \"releaseYear\": 2022,\r\n    \"director\": \"Director 1\",\r\n    \"duration\": 120,\r\n    \"description\": \"Description 1\",\r\n    \"contentType\": \"series\",\r\n    \"seasons\": [{ \"seasonNumber\": \"1\", \"episodes\": { \"E1\" : \"linktoepisode\" , \"E2\": \"linktoepisode\"} },\r\n    { \"seasonNumber\": \"1\", \"episodes\": { \"E1\" : \"linktoepisode\" , \"E2\": \"linktoepisode\"} }],\r\n    \"watchCount\": 0\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/addSeries",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"addSeries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSeries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU1YjA5YTg4OWQ2ZTcwMTk4OWI5YTQiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkzMTk2MzI0LCJleHAiOjE2OTMxOTk5MjR9.C40MptNJl7K_uwJEyVrAiriio4UFZ3e0CKvEkuckiJk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{local}}/api/v1/getSeries?page=1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getSeries"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addnewseasonbyid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU1YjA5YTg4OWQ2ZTcwMTk4OWI5YTQiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkzMTk5OTc1LCJleHAiOjE2OTMyMDM1NzV9.XS8sZ2Et7Hb_a6NznLTjAMCO8gNWeDM0h-krDd8Whvc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"season\" : {\"seasonNumber\": 3,\r\n     \"episodes\":{ \"E1\" : \"linktoepisode\" , \"E2\": \"linktoepisode\"}\r\n      } ,\r\n      \"id\": \"64ec256bd6c15538a57114e8\"\r\n     \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/v1/addnewSeason",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"addnewSeason"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
