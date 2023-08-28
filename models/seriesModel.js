@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const movieSchema = new mongoose.Schema(
+const seriesModel = new mongoose.Schema(
   {
     title: { type: String, required: true },
     genre: { type: String, required: true },
@@ -9,7 +9,7 @@ const movieSchema = new mongoose.Schema(
     duration: { type: Number, required: true },
     description: { type: String, required: true },
     contentType: { type: String, enum: ["movie", "series"], required: true },
-    link: { type: String, required: true, unique: true },
+    seasons: [{ seasonNumber: Number, episodes: {} }],
     watchCount: { type: Number, default: 0 },
     poster: String,
     cover_image: String,
@@ -19,4 +19,4 @@ const movieSchema = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model("Movie", movieSchema)
+module.exports = mongoose.model("series", seriesModel)
