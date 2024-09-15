@@ -1,13 +1,39 @@
-# MSMA
-Movie and Series Management Application with Authentication, File Upload, and API Features
+# MSMA - Movie and Series Management Application
 
--- how to run -- 
-# DOCKER 
-docker build -t msma .
-docker run -p 3000:7800 -d msma
+A comprehensive application for managing movies and series, with features like authentication, file uploads, and API integrations.
 
-# NODE
+## Features
+- **Authentication**: Secure login and registration system.
+- **File Upload**: Supports media uploads for movies and series.
+- **API Integration**: RESTful API to interact with the system programmatically.
 
-node app 
+## How to Run
 
-port 7800
+### Docker
+1. Build the Docker image:
+    ```bash
+    docker build -t msma .
+    ```
+2. Run the Docker container:
+    ```bash
+    docker run -p 3000:7800 -d msma
+    ```
+   The application will be available on `http://localhost:3000`.
+
+### Node.js
+1. Install dependencies (if not already installed):
+    ```bash
+    npm install
+    ```
+2. Run the application:
+    ```bash
+    node app
+    ```
+   The application will be running on port `7800`.
+
+### Default Port
+- **Port**: 7800 (can be mapped to port 3000 in Docker).
+
+## API Documentation
+- Documentation for the API is available at `/api/docs`.
+
